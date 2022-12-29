@@ -6,6 +6,7 @@ import { Filter } from './filter/Filter';
 
 
 class App extends Component {
+
   state = {
     contacts: [{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -26,9 +27,9 @@ class App extends Component {
     }))
   }
 
-  handleFindContact = event => {
-    const value = event.target.value;
-    this.setState({ filter: value });
+
+   handleFindContact = event => {
+    this.setState({ filter: event.target.value });
 
   }
 
@@ -39,8 +40,9 @@ class App extends Component {
 
   }
 
+
   render() {
-    console.log(this.findGoodContacts);
+
     return (
       <div
         style={{
@@ -57,15 +59,15 @@ class App extends Component {
         <Form onSubmit={this.formHandelSubmit} />
 
         <h2>Contacts</h2>
-        <Filter value={this.state.filter} filterName={this.handleFindContact} />
+        <Filter value={this.state.filter} onChange={this.handleFindContact} />
 
-        {this.state.filter && (
-          <ContactList contacts={this.state.contacts} onDeleteContact={this.deleteContact} findContacts={this.findGoodContacts} />
+        {this.state.contacts.length && (
+          <ContactList contacts={this.state.contacts}
+            onDeleteContact={this.deleteContact}
+            findContacts={this.findGoodContacts} />
         )}
-
       </div>
     );
   }
 }
-
 export default App;

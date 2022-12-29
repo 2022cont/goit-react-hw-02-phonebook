@@ -8,10 +8,7 @@ class Form extends Component {
     };
 
     handleInput = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-
-        this.setState({ [name]: value });
+        this.setState({ [event.target.name]: event.target.value });
     };
 
     handleAddSubmit = event => {
@@ -30,6 +27,7 @@ class Form extends Component {
             <form onSubmit={this.handleAddSubmit}>
                 <label>
                     <input
+                        value={this.state.name}
                         type="text"
                         name="name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -41,6 +39,7 @@ class Form extends Component {
                 </label>
                 <label>
                     <input
+                        value={this.state.number}
                         type="text"
                         name="number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
